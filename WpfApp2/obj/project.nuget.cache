@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "BHTqErUEZs2KLl6fa/UHKmqswye8xf8CI7C5x6NSA1JH+fWoTtr/SxJGuW0M5jHviugo7nkbsuCVDHH4vjm2Ag==",
+  "dgSpecHash": "hZsMNbUhWfyb6EYnrAzhJ2g5W1Q492GL7xA+WsFYw7uc9gygKci4qKLS1Q/vdZbzr2GtIPl7B/Ta3BthZaQk3A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\63926\\source\\repos\\TodoApp\\WpfApp2\\WpfApp2.csproj",
+  "projectFilePath": "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1(MVVM)\\WpfApp2\\WpfApp2.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\63926\\.nuget\\packages\\materialdesigncolors\\1.2.7\\materialdesigncolors.1.2.7.nupkg.sha512",
+    "C:\\Users\\63926\\.nuget\\packages\\materialdesignthemes\\3.2.0\\materialdesignthemes.3.2.0.nupkg.sha512",
     "C:\\Users\\63926\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.0\\microsoft.data.sqlite.core.5.0.0.nupkg.sha512",
     "C:\\Users\\63926\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\63926\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.0\\microsoft.entityframeworkcore.5.0.0.nupkg.sha512",

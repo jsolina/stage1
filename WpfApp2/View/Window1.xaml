@@ -5,52 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2.View"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition/>
-            <RowDefinition/>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"  
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Window1" Width="900" WindowStartupLocation="CenterScreen">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <StackPanel>
+            <materialDesign:Card Padding="25" Margin="10,10,10,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
 
-        </Grid.RowDefinitions>
+                </Grid.RowDefinitions>
 
-        <Label Grid.Row="0"  Grid.ColumnSpan="1" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Todo List/ Task List"></Label>
+                <ContentControl Content="{Binding SelectedViewModel}"/>
 
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="5,37,5,160" x:Name="OrderDG" IsReadOnly="True" Grid.RowSpan="2" SelectionMode="Single">
+                <Label Grid.Row="0"  Grid.ColumnSpan="1" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Todo List/ Task List"></Label>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Task Name/Details" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="0" ItemsSource="{Binding TaskLists}" IsReadOnly="True" Grid.RowSpan="2" SelectionMode="Single">
 
-                <DataGridTemplateColumn Header="View Items">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="View" Click="View"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Task Name/Details" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
 
-                <DataGridTemplateColumn Header="Update">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Edit" Click="Update"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="View Items">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="View" Content="{materialDesign:PackIcon search}" ToolTip="View Item" Style="{StaticResource MaterialDesignToolButton}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Delete">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Delete" Click="Delete"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Update">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="Update" Content="{materialDesign:PackIcon edit}" ToolTip="Update Item"  Style="{StaticResource MaterialDesignFlatButton}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
-        </DataGrid>
+                        <DataGridTemplateColumn Header="Delete">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="Delete" Content="{materialDesign:PackIcon delete}" ToolTip="Delete Item" Style="{DynamicResource MaterialDesignFlatAccentButton}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
 
-        <Button Grid.Row="2" Content="Add Task" Margin="306,48,336,93" Click="Add"/>
+                </DataGrid>
+            </Grid>
 
-    </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card Padding="10" Margin="12,12,12,0">
+                <Button Margin="10" Content="Add Task" Click="Add"/>
+        </materialDesign:Card>
+    </StackPanel>
+    </ScrollViewer>
+    <!--
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            
+            <Button Margin="10" Content="Add Task" Command="{Binding UpdateViewCommand}" CommandParameter="ItemList"/>
+        </StackPanel>
+        -->
+        
 </Window>

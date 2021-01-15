@@ -5,45 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2.View"
         mc:Ignorable="d"
-        Title="View Item" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition/>
-            <RowDefinition/>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"  
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="View Item" Width="800" WindowStartupLocation="CenterScreen">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <StackPanel>
+            <materialDesign:Card Padding="25" Margin="12,12,12,0">
 
-        </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
 
-        <TextBlock Grid.Row="0"  Grid.ColumnSpan="1" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="headerItemName"></TextBlock>
+                    </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="5,37,5,160" x:Name="ItemDG" IsReadOnly="True" Grid.RowSpan="2" SelectionMode="Single">
+                    <TextBlock Grid.Row="0"  Grid.ColumnSpan="1" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="headerItemName"></TextBlock>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Item Name" Binding="{Binding ItemName}"/>
-                <DataGridTextColumn Header="Item Details" Binding="{Binding ItemDetails}"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="0" x:Name="ItemDG" IsReadOnly="True" Grid.RowSpan="2" SelectionMode="Single">
 
-                <DataGridTemplateColumn Header="Update">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Edit" Click="Update"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Item Name" Binding="{Binding ItemName}"/>
+                            <DataGridTextColumn Header="Item Details" Binding="{Binding ItemDetails}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
 
-                <DataGridTemplateColumn Header="Delete">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Delete" Click="Delete"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
+                            <DataGridTemplateColumn Header="Update">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Update" Content="{materialDesign:PackIcon edit}" ToolTip="Update Item"  Style="{StaticResource MaterialDesignFlatButton}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-        </DataGrid>
+                            <DataGridTemplateColumn Header="Delete">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Delete" Content="{materialDesign:PackIcon delete}" ToolTip="Delete Item" Style="{DynamicResource MaterialDesignFlatAccentButton}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
 
-        <Button Grid.Row="2" Content="Add Item" Margin="306,48,336,93" Click="Add"/>
+            </materialDesign:Card>
 
-    </Grid>
+            <materialDesign:Card Padding="10" Margin="12,12,12,12">
+                <Button Margin="10" Content="Add Item" Click="Add"/>
+            </materialDesign:Card>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

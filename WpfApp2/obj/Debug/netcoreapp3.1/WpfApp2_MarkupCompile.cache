@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\63926\source\repos\TodoApp\WpfApp2\obj\Debug\netcoreapp3.1\
+C:\Users\63926\Documents\Visual Studio 2019\clone\stage1(MVVM)\WpfApp2\obj\Debug\netcoreapp3.1\
 WpfApp2
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\63926\source\repos\TodoApp\WpfApp2\App.xaml
-42068034795
+C:\Users\63926\Documents\Visual Studio 2019\clone\stage1(MVVM)\WpfApp2\App.xaml
+61599313341
 
-101281620197
-212-637305350
-View\CreateUpdateItem.xaml;View\CreateUpdateTask.xaml;View\ViewItems.xaml;View\Window1.xaml;
+20-426372972
+2141083531283
+MainWindow.xaml;View\CreateUpdateItem.xaml;View\CreateUpdateTask.xaml;View\ViewItems.xaml;View\Window1.xaml;View\Window2.xaml;
 
 False
 

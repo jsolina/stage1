@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using WpfApp2.Model;
+using WpfApp2.ViewModel;
 
 namespace WpfApp2.View
 {
@@ -10,18 +11,19 @@ namespace WpfApp2.View
     public partial class Window1 : Window
     {
         TaskListDbContext dbContext;
-        Model.TaskList selectedRow = new Model.TaskList();
+        TaskList selectedRow = new TaskList();
 
-        public Window1(TaskListDbContext dbContext)
+        public Window1(TaskListDbContext _dbContext)
         {
+            this.dbContext = _dbContext;
             InitializeComponent();
-            this.dbContext = dbContext;
             GetTasks();
         }
 
         private void GetTasks()
         {
-            OrderDG.ItemsSource = dbContext.Tasks.OrderByDescending(i => i.Id).ToList();
+            var viewModel = new TaskListViewModel(dbContext);
+            DataContext = viewModel;
         }
 
         private void View(object s, RoutedEventArgs e)
@@ -54,6 +56,12 @@ namespace WpfApp2.View
             dbContext.SaveChanges();
             GetTasks();
             MessageBox.Show(rowToBeDeleted.Name + " has been Deleted", "Task Deleted!");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window2 vi = new Window2();
+            vi.ShowDialog();
         }
     }
 

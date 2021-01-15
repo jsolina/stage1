@@ -5,46 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2.View"
         mc:Ignorable="d"
-        Title="Create Update Order" Height="200" Width="500">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="45*"/>
-            <ColumnDefinition Width="559*"/>
-            <ColumnDefinition Width="27*"/>
-            <ColumnDefinition Width="169*"/>
-        </Grid.ColumnDefinitions>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"  
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Create Update Order" Height="230" Width="500" WindowStartupLocation="CenterScreen">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="559*"/>
+                <ColumnDefinition Width="27*"/>
+                <ColumnDefinition Width="169*"/>
+            </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="5,5,34,5" Grid.ColumnSpan="3">
-            <StackPanel Margin="5">
+            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0" Margin="5,5,34,5" Grid.ColumnSpan="3">
+                <StackPanel Margin="5">
 
-                <TextBlock Name="UpdateOrAddType" Text="{Binding UpdateOrAdd}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,15" />
+                    <TextBlock Name="UpdateOrAddType" Text="{Binding UpdateOrAdd}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,15" />
 
-                <Grid Margin="5" x:Name="SelectedRowDetails">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                    <Grid Margin="5" x:Name="SelectedRowDetails">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="Task Name:" Margin="5"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="name" Margin="5"/>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Task Name:" Margin="5"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" x:Name="name" Margin="5"/>
 
-                    <Label Grid.Row="1" Grid.Column="0" Content="Description" Margin="5"/>
-                    <TextBox Grid.Row="1" Grid.Column="1"  x:Name="desc" Margin="5"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="Description" Margin="5"/>
+                        <TextBox Grid.Row="1" Grid.Column="1"  x:Name="desc" Margin="5"/>
 
-                    <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Submit" Margin="5" Click="Submit"/>
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Submit" Margin="15" Click="Submit"/>
 
-                </Grid>
+                    </Grid>
 
-            </StackPanel>
-        </Border>
+                </StackPanel>
+            </Border>
 
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </Window>
