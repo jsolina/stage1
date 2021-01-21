@@ -7,9 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="MainWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\CreateUpdateItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,14 +19,8 @@
     <Compile Update="View\Window1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Window2.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="View\CreateUpdateItem.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -40,9 +31,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Window1.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\Window2.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

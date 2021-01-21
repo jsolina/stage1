@@ -12,35 +12,35 @@ namespace WpfApp2.Model
             Database.EnsureCreated();
         }
 
-        public DbSet<TaskList> Tasks { get; set; }
-        public DbSet<Item> Items { get; set; }
+        public DbSet<TaskListModel> Tasks { get; set; }
+        public DbSet<ItemModel> Items { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TaskList>().HasData(GetTasks());
+            modelBuilder.Entity<TaskListModel>().HasData(GetTasks());
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Item>().HasData(GetItems());
+            modelBuilder.Entity<ItemModel>().HasData(GetItems());
             base.OnModelCreating(modelBuilder);
         }
 
-        private TaskList[] GetTasks()
+        private TaskListModel[] GetTasks()
         {
-            return new TaskList[]
+            return new TaskListModel[]
             {
-                new TaskList { Id = 1, Name = "Work", Description = "this is desc.."},
-                new TaskList { Id = 2, Name = "Shopping", Description = "this is desc.."},
+                new TaskListModel { Id = 1, Name = "Work", Description = "this is desc.."},
+                new TaskListModel { Id = 2, Name = "Shopping", Description = "this is desc.."},
             };
         }
 
-        private Item[] GetItems()
+        private ItemModel[] GetItems()
         {
-            return new Item[]
+            return new ItemModel[]
             {
-                new Item { Id = 1, IdTask = 2, ItemName = "Buying some cookies", ItemDetails = "this is desc", Status = "Pending"},
-                new Item { Id = 2, IdTask = 2, ItemName = "Buying Bananas", ItemDetails = "We love bananas", Status = "Done"},
-                new Item { Id = 3, IdTask = 1, ItemName = "Work Assignment", ItemDetails = "this is details..", Status = "Done"},
+                new ItemModel { Id = 1, IdTask = 2, ItemName = "Buying some cookies", ItemDetails = "this is desc", Status = "Pending"},
+                new ItemModel { Id = 2, IdTask = 2, ItemName = "Buying Bananas", ItemDetails = "We love bananas", Status = "Done"},
+                new ItemModel { Id = 3, IdTask = 1, ItemName = "Work Assignment", ItemDetails = "this is details..", Status = "Done"},
             };
         }
     }

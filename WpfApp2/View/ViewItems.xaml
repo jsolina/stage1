@@ -13,22 +13,30 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="View Item" Width="800" WindowStartupLocation="CenterScreen">
+        Title="View Item" Width="900" WindowStartupLocation="CenterScreen">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <StackPanel>
             <materialDesign:Card Padding="25" Margin="12,12,12,0">
-
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="75"/>
                         <RowDefinition/>
                         <RowDefinition/>
-
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0"  Grid.ColumnSpan="1" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="headerItemName"></TextBlock>
 
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="0" x:Name="ItemDG" IsReadOnly="True" Grid.RowSpan="2" SelectionMode="Single">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0"  Grid.ColumnSpan="1" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="headerItemName"></TextBlock>
+                        <Button Grid.Row="0" Grid.Column="1" Margin="10" Content="Add Item" Command="{Binding AddCommands}"/>
+                    </Grid>
+
+                    <DataGrid Grid.Row="1" Name="itemGrid" AutoGenerateColumns="False" Margin="0" ItemsSource="{Binding ItemModels}" IsReadOnly="True" Grid.RowSpan="2" SelectionMode="Single"
+                          CurrentCell="{Binding CurrentCell}">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
@@ -39,7 +47,7 @@
                             <DataGridTemplateColumn Header="Update">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Click="Update" Content="{materialDesign:PackIcon edit}" ToolTip="Update Item"  Style="{StaticResource MaterialDesignFlatButton}"/>
+                                        <Button Command="{Binding Path=DataContext.UpdateCommands,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding ElementName=itemGrid,Path=SelectedItem.Id}" Content="{materialDesign:PackIcon edit}" ToolTip="Update Item"  Style="{StaticResource MaterialDesignFlatButton}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -47,18 +55,15 @@
                             <DataGridTemplateColumn Header="Delete">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Click="Delete" Content="{materialDesign:PackIcon delete}" ToolTip="Delete Item" Style="{DynamicResource MaterialDesignFlatAccentButton}"/>
+                                        <Button Command="{Binding Path=DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding ElementName=itemGrid,Path=SelectedItem.Id}" Content="{materialDesign:PackIcon delete}" ToolTip="Delete Item" Style="{DynamicResource MaterialDesignFlatAccentButton}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
+
                     </DataGrid>
                 </Grid>
 
-            </materialDesign:Card>
-
-            <materialDesign:Card Padding="10" Margin="12,12,12,12">
-                <Button Margin="10" Content="Add Item" Click="Add"/>
             </materialDesign:Card>
         </StackPanel>
     </ScrollViewer>

@@ -5,15 +5,13 @@ using System.Text;
 
 namespace WpfApp2.Model
 {
-    public class TaskList : INotifyPropertyChanged
+    public class TaskListModel
     {
-        /*
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        */
-        //public double Amount { get; set; }
 
+        /*
         private int _Id;
         private string _Name;
         private string _Description;
@@ -26,7 +24,7 @@ namespace WpfApp2.Model
             set
             {
                 _Id = value;
-                OnPropertyChanged("Id");
+                NotifyPropertyChanged("Id");
             }
         }
         public string Name
@@ -37,8 +35,11 @@ namespace WpfApp2.Model
             }
             set
             {
-                _Name = value;
-                OnPropertyChanged("Name");
+                if (value != _Name)
+                {
+                    _Name = value;
+                    NotifyPropertyChanged("Name");
+                }
             }
         }
         public string Description
@@ -50,21 +51,21 @@ namespace WpfApp2.Model
             set
             {
                 _Description = value;
-                OnPropertyChanged("Description");
+                NotifyPropertyChanged("Description");
             }
         }
 
         #region INotifyPropertyChanged Members  
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyName)
+        private void NotifyPropertyChanged(String propertyName )
         {
             if (PropertyChanged != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
         #endregion
-
+        */
     }
 }

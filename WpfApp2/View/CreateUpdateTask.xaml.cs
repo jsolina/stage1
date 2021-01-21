@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp2.Model;
+using WpfApp2.ViewModel;
 
 namespace WpfApp2.View
 {
@@ -18,50 +19,26 @@ namespace WpfApp2.View
     /// </summary>
     public partial class CreateUpdateTask : Window
     {
-        TaskList order = new TaskList();
         TaskListDbContext dbContext;
+        TaskListModel selectedRow = new TaskListModel();
 
-        Model.TaskList selectedRow = new Model.TaskList();
-
-        string updateOrAdd;
-
-        public CreateUpdateTask(TaskListDbContext _dbContext, TaskList _selectedRow, string _updateOrAdd)
+        public CreateUpdateTask(TaskListDbContext _dbContext, TaskListModel _selectedRow, string _updateOrAdd)
         {
-            this.dbContext = _dbContext;
-
             InitializeComponent();
-            updateOrAdd = _updateOrAdd;
-            UpdateOrAddType.DataContext = new SelectedRow() { UpdateOrAdd = updateOrAdd + " Task" };
 
-            if (updateOrAdd == "Update")
+            this.dbContext = _dbContext;
+            if (_updateOrAdd == "Update")
             {
                 selectedRow = _selectedRow;
-                SelectedRowDetails.DataContext = selectedRow;
 
-                name.Text = selectedRow.Name;
-                desc.Text = selectedRow.Description;
             }
-  
+
+            this.DataContext = new UpdateAddTaskViewModel(dbContext, selectedRow, _updateOrAdd);
+
+
+            var viewModel = new UpdateAddTaskViewModel(dbContext, selectedRow, _updateOrAdd);
+            DataContext = viewModel;
         }
 
-
-        private void Submit(object s, RoutedEventArgs e)
-        {
-            selectedRow.Name = name.Text;
-            selectedRow.Description = desc.Text;
-            if (updateOrAdd == "Add")
-            {
-                dbContext.Tasks.Add(selectedRow);
-                dbContext.SaveChanges();
-                MessageBox.Show("Task has been Added", "Added");
-            }
-            if (updateOrAdd == "Update")
-            {
-                dbContext.Update(selectedRow);
-                dbContext.SaveChanges();
-                MessageBox.Show("Task has been Updated", "Updated");
-            }
-            this.Close();
-        }
     }
 }

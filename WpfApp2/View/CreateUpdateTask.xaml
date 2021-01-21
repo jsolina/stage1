@@ -28,7 +28,7 @@
 
                     <TextBlock Name="UpdateOrAddType" Text="{Binding UpdateOrAdd}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,15" />
 
-                    <Grid Margin="5" x:Name="SelectedRowDetails">
+                    <Grid Margin="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -42,19 +42,36 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Content="Task Name:" Margin="5"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" x:Name="name" Margin="5"/>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Task Name *" Margin="5"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" x:Name="name" Text="{Binding Path=TaskListModelSelecteds.Name}"/>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="Description" Margin="5"/>
-                        <TextBox Grid.Row="1" Grid.Column="1"  x:Name="desc" Margin="5"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" x:Name="desc" Text="{Binding Path=TaskListModelSelecteds.Description}"/>
 
-                        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Submit" Margin="15" Click="Submit"/>
+
 
                     </Grid>
-
                 </StackPanel>
             </Border>
+            <Button Grid.ColumnSpan="3" Margin="90,137,48,45" Command="{Binding Path=SubmitClick}" Content="Submit" Grid.Column="1"/>
+
+            <!--
+            <TextBox Height="45"
+                   HorizontalAlignment="Center"
+                   Name="textBlock1"
+                   Text="{Binding Path=TaskListModels.Name}" 
+                   VerticalAlignment="Top"
+                   Width="217" />
+
+            <TextBox Height="45"
+                   HorizontalAlignment="Left"
+                   Name="textBlock2"
+                   Text="{Binding Path=TaskListModels.Description}"
+                   VerticalAlignment="Center"
+                   Width="217" Margin="-10,0,0,0" />
+            -->
 
         </Grid>
+
     </ScrollViewer>
 </Window>

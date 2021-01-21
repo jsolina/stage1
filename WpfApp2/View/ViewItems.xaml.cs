@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp2.Model;
+using WpfApp2.ViewModel;
 
 namespace WpfApp2.View
 {
@@ -20,48 +21,18 @@ namespace WpfApp2.View
     public partial class ViewItems : Window
     {
         TaskListDbContext dbContext;
-        Model.TaskList selectedRowTask = new Model.TaskList();
-        Model.Item selectedRowItem = new Model.Item();
+        TaskListModel selectedRowTask = new TaskListModel();
+        ItemModel selectedRowItem = new ItemModel();
 
-        public ViewItems(TaskListDbContext dbContext, TaskList _selectedRowTask)
+        public ViewItems(TaskListDbContext _dbContext, TaskListModel _selectedRowTask)
         {
             InitializeComponent();
-            this.dbContext = dbContext;
-
+            this.dbContext = _dbContext;
             selectedRowTask = _selectedRowTask;
-
             headerItemName.Text = "Item List of Task: '" + selectedRowTask.Name + "'";
 
-            GetItems();
-        }
-
-        private void GetItems()
-        {
-            ItemDG.ItemsSource = dbContext.Items.OrderByDescending(i => i.Id).Where(x => x.IdTask == selectedRowTask.Id).ToList();
-        }
-
-        private void Add(object s, RoutedEventArgs e)
-        {
-            CreateUpdateItem cuo = new CreateUpdateItem(dbContext, selectedRowTask, selectedRowItem, "Add");
-            cuo.ShowDialog();
-            GetItems();
-        }
-
-        private void Update(object s, RoutedEventArgs e)
-        {
-            selectedRowItem = (s as FrameworkElement).DataContext as Model.Item;
-            CreateUpdateItem vi = new CreateUpdateItem(dbContext, selectedRowTask, selectedRowItem, "Update");
-            vi.ShowDialog();
-            GetItems();
-        }
-
-        private void Delete(object s, RoutedEventArgs e)
-        {
-            var rowToBeDeleted = (s as FrameworkElement).DataContext as Model.Item;
-            dbContext.Items.Remove(rowToBeDeleted);
-            dbContext.SaveChanges();
-            GetItems();
-            MessageBox.Show(rowToBeDeleted.ItemName + " has been Deleted", "Item Deleted!");
+            var viewModel = new ItemsViewModel(dbContext, selectedRowTask);
+            this.DataContext = viewModel;
         }
     }
 }

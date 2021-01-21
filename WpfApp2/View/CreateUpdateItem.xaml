@@ -42,18 +42,18 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="0" Grid.Column="0" Content="Item Name:" Margin="5"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" x:Name="name" Margin="5"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Path=ItemModelSelecteds.ItemName}"/>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="Item Details:" Margin="5"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="desc" Margin="5"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Path=ItemModelSelecteds.ItemDetails}"/>
 
                         <Label Grid.Row="2" Grid.Column="0" Content="Item Status:" Margin="5"/>
-                        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="status" Margin="5">
+                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Path=ItemModelSelecteds.Status}">
                             <ComboBoxItem>Pending</ComboBoxItem>
                             <ComboBoxItem>Done</ComboBoxItem>
                         </ComboBox>
 
-                        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Submit" Margin="15" Click="Submit"/>
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Submit" Margin="15,21,15,9" Command="{Binding Path=SubmitClick}"/>
 
                     </Grid>
 

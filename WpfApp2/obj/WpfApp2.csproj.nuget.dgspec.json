@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1(MVVM)\\WpfApp2\\WpfApp2.csproj": {}
+    "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1\\WpfApp2\\WpfApp2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1(MVVM)\\WpfApp2\\WpfApp2.csproj": {
+    "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1\\WpfApp2\\WpfApp2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1(MVVM)\\WpfApp2\\WpfApp2.csproj",
+        "projectUniqueName": "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1\\WpfApp2\\WpfApp2.csproj",
         "projectName": "WpfApp2",
-        "projectPath": "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1(MVVM)\\WpfApp2\\WpfApp2.csproj",
+        "projectPath": "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1\\WpfApp2\\WpfApp2.csproj",
         "packagesPath": "C:\\Users\\63926\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1(MVVM)\\WpfApp2\\obj\\",
+        "outputPath": "C:\\Users\\63926\\Documents\\Visual Studio 2019\\clone\\stage1\\WpfApp2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\63926\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,6 +55,14 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Prism.Core": {
+              "target": "Package",
+              "version": "[8.0.0.1909, )"
             }
           },
           "imports": [

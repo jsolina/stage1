@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WpfApp2.Model
 {
-    public class Item
+    public class ItemModelSelected
     {
         public int Id { get; set; }
         public int IdTask { get; set; }
