@@ -17,14 +17,14 @@ namespace WpfApp2.View
     /// <summary>
     /// Interaction logic for CreateUpdateItem.xaml
     /// </summary>
-    public partial class CreateUpdateItem : Window
+    public partial class AddUpdateItemView : Window
     {
 
         TaskListDbContext dbContext;
         ItemModel selectedRowItem = new ItemModel();
         TaskListModel selectedRowTask = new TaskListModel();
 
-        public CreateUpdateItem(TaskListDbContext _dbContext, TaskListModel _selectedRowTask, ItemModel _selectedRowItem, string _updateOrAdd)
+        public AddUpdateItemView(TaskListDbContext _dbContext, TaskListModel _selectedRowTask, ItemModel _selectedRowItem, string _updateOrAdd)
         {
             InitializeComponent();
             this.dbContext = _dbContext;
@@ -35,9 +35,9 @@ namespace WpfApp2.View
                 selectedRowItem = _selectedRowItem;
             }
 
-            this.DataContext = new UpdateAddItemViewModel(dbContext, selectedRowTask, selectedRowItem, _updateOrAdd);
+            this.DataContext = new AddUpdateItemViewModel(dbContext, selectedRowTask, selectedRowItem, _updateOrAdd);
 
-             var viewModel = new UpdateAddItemViewModel(dbContext, selectedRowTask, selectedRowItem, _updateOrAdd);
+             var viewModel = new AddUpdateItemViewModel(dbContext, selectedRowTask, selectedRowItem, _updateOrAdd);
              DataContext = viewModel;
         }
 

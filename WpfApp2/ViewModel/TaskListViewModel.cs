@@ -102,14 +102,14 @@ namespace WpfApp2.ViewModel
         public void Updates(object o)
         {
             taskListSelectedRow = dbContext.Tasks.FirstOrDefault(d => d.Id.Equals(o));
-            CreateUpdateTask cuo = new CreateUpdateTask(dbContext, taskListSelectedRow, "Update");
+            AddUpdateTaskView cuo = new AddUpdateTaskView(dbContext, taskListSelectedRow, "Update");
             cuo.ShowDialog();
             GetData();
         }
 
         public void Add(object o)
         {
-            CreateUpdateTask cuo = new CreateUpdateTask(dbContext, taskListSelectedRow, "Add");
+            AddUpdateTaskView cuo = new AddUpdateTaskView(dbContext, taskListSelectedRow, "Add");
             cuo.ShowDialog();
             GetData();
         }
@@ -117,7 +117,7 @@ namespace WpfApp2.ViewModel
         public void View(object o)
         {
             taskListSelectedRow = dbContext.Tasks.FirstOrDefault(d => d.Id.Equals(o));
-            ViewItems vi = new ViewItems(dbContext, taskListSelectedRow);
+            ItemsView vi = new ItemsView(dbContext, taskListSelectedRow);
             vi.ShowDialog();
             GetData();
         }

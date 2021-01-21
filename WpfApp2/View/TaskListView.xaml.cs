@@ -11,11 +11,11 @@ namespace WpfApp2.View
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class TaskListView : Window
     {
         TaskListDbContext dbContext;
 
-        public Window1(TaskListDbContext _dbContext)
+        public TaskListView(TaskListDbContext _dbContext)
         {
             this.dbContext = _dbContext;
             InitializeComponent();

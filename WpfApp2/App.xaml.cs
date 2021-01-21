@@ -27,13 +27,13 @@ namespace WpfApp2
                 option.UseSqlite("Data Source = Task.db");
             });
 
-            services.AddSingleton<Window1>();
+            services.AddSingleton<TaskListView>();
             serviceProvider = services.BuildServiceProvider();
         }
 
         private void OnStartup(object s, StartupEventArgs e)
         {
-            var mainWindow = serviceProvider.GetService<Window1>();
+            var mainWindow = serviceProvider.GetService<TaskListView>();
             mainWindow.Show();
         }
     }

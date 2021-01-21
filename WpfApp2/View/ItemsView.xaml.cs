@@ -18,13 +18,13 @@ namespace WpfApp2.View
     /// <summary>
     /// Interaction logic for ViewItems.xaml
     /// </summary>
-    public partial class ViewItems : Window
+    public partial class ItemsView : Window
     {
         TaskListDbContext dbContext;
         TaskListModel selectedRowTask = new TaskListModel();
         ItemModel selectedRowItem = new ItemModel();
 
-        public ViewItems(TaskListDbContext _dbContext, TaskListModel _selectedRowTask)
+        public ItemsView(TaskListDbContext _dbContext, TaskListModel _selectedRowTask)
         {
             InitializeComponent();
             this.dbContext = _dbContext;

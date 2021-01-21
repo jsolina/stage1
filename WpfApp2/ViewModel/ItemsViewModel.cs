@@ -104,7 +104,7 @@ namespace WpfApp2.ViewModel
         public void Updates(object o)
         {
             ItemModelSelectedRow = dbContext.Items.FirstOrDefault(d => d.Id.Equals(o));
-            CreateUpdateItem uaivm = new CreateUpdateItem(dbContext, selectedRowTask, ItemModelSelectedRow, "Update");
+            AddUpdateItemView uaivm = new AddUpdateItemView(dbContext, selectedRowTask, ItemModelSelectedRow, "Update");
             uaivm.ShowDialog();
             GetData();
 
@@ -112,7 +112,7 @@ namespace WpfApp2.ViewModel
 
         public void Add(object o)
         {
-            CreateUpdateItem uaivm = new CreateUpdateItem(dbContext, selectedRowTask, ItemModelSelectedRow, "Add");
+            AddUpdateItemView uaivm = new AddUpdateItemView(dbContext, selectedRowTask, ItemModelSelectedRow, "Add");
             uaivm.ShowDialog();
             GetData();
         }

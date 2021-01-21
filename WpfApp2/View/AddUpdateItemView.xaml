@@ -1,11 +1,10 @@
-﻿<Window x:Class="WpfApp2.View.CreateUpdateTask"
+﻿<Window x:Class="WpfApp2.View.AddUpdateItemView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2.View"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -13,7 +12,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Create Update Order" Height="230" Width="500" WindowStartupLocation="CenterScreen">
+        Title="Create Update Item" Height="270" Width="500" WindowStartupLocation="CenterScreen">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -42,36 +41,24 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Content="Task Name *" Margin="5"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" x:Name="name" Text="{Binding Path=TaskListModelSelecteds.Name}"/>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Item Name:" Margin="5"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Path=ItemModelSelecteds.ItemName}"/>
 
-                        <Label Grid.Row="1" Grid.Column="0" Content="Description" Margin="5"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" x:Name="desc" Text="{Binding Path=TaskListModelSelecteds.Description}"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="Item Details:" Margin="5"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Path=ItemModelSelecteds.ItemDetails}"/>
 
+                        <Label Grid.Row="2" Grid.Column="0" Content="Item Status:" Margin="5"/>
+                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Path=ItemModelSelecteds.Status}">
+                            <ComboBoxItem>Pending</ComboBoxItem>
+                            <ComboBoxItem>Done</ComboBoxItem>
+                        </ComboBox>
 
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Submit" Margin="15,21,15,9" Command="{Binding Path=SubmitClick}"/>
 
                     </Grid>
+
                 </StackPanel>
             </Border>
-            <Button Grid.ColumnSpan="3" Margin="90,137,48,45" Command="{Binding Path=SubmitClick}" Content="Submit" Grid.Column="1"/>
-
-            <!--
-            <TextBox Height="45"
-                   HorizontalAlignment="Center"
-                   Name="textBlock1"
-                   Text="{Binding Path=TaskListModels.Name}" 
-                   VerticalAlignment="Top"
-                   Width="217" />
-
-            <TextBox Height="45"
-                   HorizontalAlignment="Left"
-                   Name="textBlock2"
-                   Text="{Binding Path=TaskListModels.Description}"
-                   VerticalAlignment="Center"
-                   Width="217" Margin="-10,0,0,0" />
-            -->
-
         </Grid>
-
     </ScrollViewer>
 </Window>

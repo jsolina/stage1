@@ -7,54 +7,51 @@ using WpfApp2.Model;
 
 namespace WpfApp2.ViewModel
 {
-    public class UpdateAddItemViewModel : INotifyPropertyChanged
+    public class AddUpdateTaskViewModel : INotifyPropertyChanged
     {
         TaskListDbContext dbContext;
-        TaskListModel selectedRowTask = new TaskListModel();
-        public ItemModel itemModels = new ItemModel();
-        public ItemModelSelected itemModelSelected = new ItemModelSelected();
+        public TaskListModel taskListModels = new TaskListModel();
+        public TaskListModelSelected taskListModelSelected = new TaskListModelSelected();
 
         //Command binding property for Button Click
         public ButtonCommandBinding SubmitClick { get; set; }
 
         string updateOrAdd;
 
-        public UpdateAddItemViewModel(TaskListDbContext _dbContext, TaskListModel _selectedRowTask, ItemModel _ItemModel, string _updateOrAdd)
+        public AddUpdateTaskViewModel(TaskListDbContext _dbContext, TaskListModel _TaskList, string _updateOrAdd)
         {
             SubmitClick = new ButtonCommandBinding(ShowMessage);
             SubmitClick.IsEnabled = true;
 
             this.dbContext = _dbContext;
 
-            ItemModels = _ItemModel;
-            selectedRowTask = _selectedRowTask;
+            TaskListModels = _TaskList;
 
             //gumamit ako ng panibagong model para hindi mag autoBind
             //pag ginamit ko kasi yung 'TaskListModels' para sa selectedRow ko, nag chachange yung dataValue sa DataGrid kahit hindi pa nag ttrigger uupdate
-            ItemModelSelecteds.ItemName = ItemModels.ItemName;
-            ItemModelSelecteds.ItemDetails = ItemModels.ItemDetails;
-            ItemModelSelecteds.Status = ItemModels.Status;
+            TaskListModelSelecteds.Name = TaskListModels.Name; 
+            TaskListModelSelecteds.Description = TaskListModels.Description;
 
             updateOrAdd = _updateOrAdd;
         }
 
-        public ItemModel ItemModels
+        public TaskListModel TaskListModels
         {
-            get { return itemModels; }
+            get { return taskListModels; }
             set
             {
-                itemModels = value;
-                NotifyPropertyChanged("ItemModels");
+                taskListModels = value;
+                NotifyPropertyChanged("TaskListModel");
             }
         }
 
-        public ItemModelSelected ItemModelSelecteds
+        public TaskListModelSelected TaskListModelSelecteds
         {
-            get { return itemModelSelected; }
+            get { return taskListModelSelected; }
             set
             {
-                itemModelSelected = value;
-                NotifyPropertyChanged("ItemModelSelecteds");
+                taskListModelSelected = value;
+                NotifyPropertyChanged("TaskListModelSelecteds");
             }
         }
 
@@ -82,31 +79,29 @@ namespace WpfApp2.ViewModel
         private void ShowMessage()
         {
             //change value to give notification of the click
-            NotifyPropertyChanged("ItemModels");
+            NotifyPropertyChanged("TaskListModels");
 
-            if (ItemModelSelecteds.ItemName != null)
+            if (TaskListModelSelecteds.Name !=  null)
             {
-                ItemModels.ItemName = ItemModelSelecteds.ItemName;
-                ItemModels.ItemDetails = ItemModelSelecteds.ItemDetails;
-                ItemModels.Status = ItemModelSelecteds.Status;
+                TaskListModels.Name = TaskListModelSelecteds.Name;
+                TaskListModels.Description = TaskListModelSelecteds.Description;
 
                 if (updateOrAdd == "Update")
                 {
-                    dbContext.Update(ItemModels);
+                    dbContext.Update(TaskListModels);
                     dbContext.SaveChanges();
-                    MessageBox.Show("Item has been Updated", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Task has been Updated", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    ItemModels.IdTask = selectedRowTask.Id;
-                    dbContext.Items.Add(ItemModels);
+                    dbContext.Tasks.Add(TaskListModels);
                     dbContext.SaveChanges();
-                    MessageBox.Show("Item has been Added", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Task has been Added", "Added", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Item Name cannot be null/empty", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Task Name cannot be null/empty", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
