@@ -24,7 +24,7 @@ namespace WpfApp2
             ServiceCollection services = new ServiceCollection();
             services.AddDbContext<TaskListDbContext>(option =>
             {
-                option.UseSqlite("Data Source = Task.db");
+                option.UseSqlite("Data Source = TodoApp1.db");
             });
 
             services.AddSingleton<TaskListView>();

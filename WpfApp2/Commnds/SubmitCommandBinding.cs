@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace WpfApp2.Commnds
 {
-    public class ButtonCommandBinding : ICommand
+    public class SubmitCommandBinding : ICommand
     {
         //delegate command to register method to be executed
         private readonly Action handler;
@@ -16,7 +16,7 @@ namespace WpfApp2.Commnds
         /// So that it can direct on event execution
         /// </summary>
         /// <param name="handler"></param>
-        public ButtonCommandBinding(Action handler)
+        public SubmitCommandBinding(Action handler)
         {
             // Assign the method name to the handler
             this.handler = handler;

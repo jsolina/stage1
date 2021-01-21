@@ -15,13 +15,13 @@ namespace WpfApp2.ViewModel
         public ItemModelSelected itemModelSelected = new ItemModelSelected();
 
         //Command binding property for Button Click
-        public ButtonCommandBinding SubmitClick { get; set; }
+        public SubmitCommandBinding SubmitClick { get; set; }
 
         string updateOrAdd;
 
         public AddUpdateItemViewModel(TaskListDbContext _dbContext, TaskListModel _selectedRowTask, ItemModel _ItemModel, string _updateOrAdd)
         {
-            SubmitClick = new ButtonCommandBinding(ShowMessage);
+            SubmitClick = new SubmitCommandBinding(ShowMessage);
             SubmitClick.IsEnabled = true;
 
             this.dbContext = _dbContext;
